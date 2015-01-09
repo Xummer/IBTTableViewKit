@@ -57,6 +57,11 @@
                              accessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [secInfo addCell:rightValueCellInfo];
     
+    IBTTableViewCellInfo *rightBadgeCellInfo =
+    [IBTTableViewCellInfo badgeRightCellForSel:@selector(onRightValueCellAction:) target:self
+                                         title:@"Age" badge:@"26"
+                                    rightValue:nil imageName:nil];
+    [secInfo addCell:rightBadgeCellInfo];
     [_m_tableViewInfo addSection:secInfo];
     
     // Section 1

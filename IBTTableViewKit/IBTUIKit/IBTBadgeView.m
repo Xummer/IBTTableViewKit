@@ -104,6 +104,9 @@
     
     CGRect rect = self.frame;
     rect.size.width = (_pOriginPoint.x + _fAddedWidth) * 2 + fOriginWidth;
+    if (_bRightAlignment) {
+        rect.origin.x = CGRectGetMaxX(self.frame) - CGRectGetWidth(rect);
+    }
     self.frame = rect;
 }
 

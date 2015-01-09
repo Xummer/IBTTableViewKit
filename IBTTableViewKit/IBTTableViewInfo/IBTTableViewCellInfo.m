@@ -21,7 +21,7 @@
 #define IBT_CELL_LEFT_FONT_SIZE_DEFAULT                 (15.0f)
 #define IBT_CELL_LEFT_COLOR_DEFAULT                     [UIColor lightGrayColor]
 
-#define IBT_CELL_RIGHT_LABEL_MIN_WIDTH                  (62.0f)
+#define IBT_CELL_RIGHT_LABEL_MIN_WIDTH                  (20.0f)
 #define IBT_CELL_RIGHT_FONT_SIZE_DEFAULT                (15.0f)
 #define IBT_CELL_RIGHT_COLOR_DEFAULT                    [UIColor lightGrayColor]
 
@@ -91,6 +91,18 @@
     if (imgName.length > 0) {
         [cellInfo addUserInfoValue:imgName forKey:CInfoImageNameKey];
     }
+    
+    return cellInfo;
+}
+
++ (IBTTableViewCellInfo *)badgeRightCellForSel:(SEL)sel target:(id)target
+                                         title:(NSString *)title badge:(id)badge rightValue:(NSString *)rightValue
+                                     imageName:(NSString *)name
+{
+    IBTTableViewCellInfo *cellInfo =
+    [[self class] badgeCellForSel:sel target:target title:title badge:badge rightValue:rightValue imageName:name];
+    
+    [cellInfo addUserInfoValue:@( YES ) forKey:CInfoBadgeAlignmentRightKey];
     
     return cellInfo;
 }
@@ -299,6 +311,7 @@
     CGFloat fGap = IBT_CELL_MARGIN;
     CGFloat fLeftX = fGap;
     CGFloat fMaxWidth = CGRectGetWidth(cell.contentView.bounds) - ((cell.accessoryType !=UITableViewCellAccessoryNone || cell.accessoryView) ? 0 : fGap);
+    CGFloat fRightX = fMaxWidth;
     
     // Left Image
     UIImageView *leftImageV = nil;
@@ -494,7 +507,10 @@
     // Badge
     IBTBadgeView *badgeView = nil;
     NSString *nsBadgeStr = [self getUserInfoValueForKey:CInfoBadgeKey];
-    if (nsBadgeStr) {
+    BOOL bBadgeRight = [[self getUserInfoValueForKey:CInfoBadgeAlignmentRightKey] boolValue];
+    
+    // Set LeftBadge
+    if (nsBadgeStr && !bBadgeRight) {
         badgeView =
         [[IBTBadgeView alloc] initWithFrame:(CGRect){
             .origin.x = fLeftX,
@@ -556,6 +572,33 @@
             .origin.y = (fH - rightLabelSize.height) * .5f,
             .size = rightLabelSize
         };
+        
+        fRightX = CGRectGetMinX(rightValueLabel.frame) - IBT_CELL_INNER_GAP;
+    }
+    
+    // Set RightBadge
+    if (nsBadgeStr && bBadgeRight) {
+        badgeView =
+        [[IBTBadgeView alloc] initWithFrame:(CGRect){
+            .origin.x = fRightX - DEFUALT_BADGE_HEIGHT,
+            .origin.y = (CGRectGetHeight(cell.contentView.bounds) - DEFUALT_BADGE_HEIGHT) * .5f,
+            .size.width = DEFUALT_BADGE_HEIGHT,
+            .size.height = DEFUALT_BADGE_HEIGHT
+        }];
+        badgeView.bRightAlignment = YES;
+        badgeView.autoresizingMask =
+        UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        
+        UIColor *badgeColor = [self getUserInfoValueForKey:CInfoBadgeBGColorKey];
+        if ([badgeColor isKindOfClass:[UIColor class]]) {
+            [badgeView setBadgeColor:badgeColor];
+        }
+        
+        [cell.contentView addSubview:badgeView];
+        
+        [badgeView setString:nsBadgeStr];
+        
+        fRightX = CGRectGetMinX(badgeView.frame) - IBT_CELL_INNER_GAP;
     }
 }
 
@@ -723,8 +766,6 @@
     else {
         NSString *toBeString = [textHolder performSelector:@selector(text)];
         [self addUserInfoValue:toBeString forKey:CInfoEditorTextKey];
-        
-        NSLog(@"%@", [self valueForKey:@"_dicInfo"]);
     }
     
 }
@@ -761,45 +802,46 @@
 /*
  @{"title":"Friend Radar","titleFont":#'<UICTFont: 0x17df36f0> font-family: ".HelveticaNeueInterface-Regular"; font-weight: normal; font-style: normal; font-size: 16.00pt',"imageName":"add_friend_icon_reda","detail":"Quickly add friends in your vicinity"}
  */
-NSString * const CInfoTitleKey              = @"title";
-NSString * const CInfoTitleFontKey          = @"titleFont";
-NSString * const CInfoTitleFontSizeKey      = @"titleFontSize";
-NSString * const CInfoTitleColorKey         = @"titleColor";
-NSString * const CInfoDetailKey             = @"detail";
-NSString * const CInfoDetailFontKey         = @"detailFont";
-NSString * const CInfoDetailFontSizeKey     = @"detailFontSize";
-NSString * const CInfoDetailColorKey        = @"detailColor";
-NSString * const CInfoImageNameKey          = @"imageName";
+NSString * const CInfoTitleKey                  = @"title";
+NSString * const CInfoTitleFontKey              = @"titleFont";
+NSString * const CInfoTitleFontSizeKey          = @"titleFontSize";
+NSString * const CInfoTitleColorKey             = @"titleColor";
+NSString * const CInfoDetailKey                 = @"detail";
+NSString * const CInfoDetailFontKey             = @"detailFont";
+NSString * const CInfoDetailFontSizeKey         = @"detailFontSize";
+NSString * const CInfoDetailColorKey            = @"detailColor";
+NSString * const CInfoImageNameKey              = @"imageName";
 
 /*
  @{"imageName":"MoreMyBankCard.png","title":"Wallet","badge":"New"}
  */
-NSString * const CInfoBadgeKey              = @"badge";
-NSString * const CInfoBadgeBGColorKey       = @"badgeColor";
+NSString * const CInfoBadgeKey                  = @"badge";
+NSString * const CInfoBadgeBGColorKey           = @"badgeColor";
+NSString * const CInfoBadgeAlignmentRightKey    = @"badgeRight";
 
 /*
  @{"title":"Settings","rightValueFontSize":"14","imageName":"MoreSetting.png","rightValue":"Unprotected"}
  */
-NSString * const CInfoRightValueKey         = @"rightValue";
-NSString * const CInfoRightValueFontKey     = @"rightValueFont";
-NSString * const CInfoRightValueFontSizeKey = @"rightValueFontSize";
-NSString * const CInfoRightValueColorKey    = @"rightValueColor";
+NSString * const CInfoRightValueKey             = @"rightValue";
+NSString * const CInfoRightValueFontKey         = @"rightValueFont";
+NSString * const CInfoRightValueFontSizeKey     = @"rightValueFontSize";
+NSString * const CInfoRightValueColorKey        = @"rightValueColor";
 
 /*
  @{"title":"Xummer0","leftValueColor":#"UIDeviceRGBColorSpace 0.341176 0.419608 0.584314 1","leftValue":"2333","url":"http://xummer26.com"}
  */
-NSString * const CInfoLeftValueKey          = @"leftValue";
-NSString * const CInfoLeftValueFontKey      = @"leftValueFont";
-NSString * const CInfoLeftValueFontSizeKey  = @"leftValueFontSize";
-NSString * const CInfoLeftValueColorKey     = @"leftValueColor";
+NSString * const CInfoLeftValueKey              = @"leftValue";
+NSString * const CInfoLeftValueFontKey          = @"leftValueFont";
+NSString * const CInfoLeftValueFontSizeKey      = @"leftValueFontSize";
+NSString * const CInfoLeftValueColorKey         = @"leftValueColor";
 
-NSString * const CInfoURLKey                = @"url";
+NSString * const CInfoURLKey                    = @"url";
 
 /*
  @{"switch":#"<UISwitch: 0x17ea71d0; frame = (254 6; 51 31); layer = <CALayer: 0x17ea7260>>","title":"Sticky on Top","on":false}
  */
-NSString * const CInfoSwitchKey             = @"switch";
-NSString * const CInfoSwitchOnKey           = @"on";
+NSString * const CInfoSwitchKey                 = @"switch";
+NSString * const CInfoSwitchOnKey               = @"on";
 
 /*
  @{"title":"WeChat ID","fEditorLMargin":0,"focus":true,"keyboardType":1,"editor":#"<UITextField: 0x180a6a50; frame = (108 7; 202 30); text = ''; clipsToBounds = YES; opaque = NO; autoresize = W; gestureRecognizers = <NSArray: 0x178e13a0>; layer = <CALayer: 0x178dc930>>","tip":" "}

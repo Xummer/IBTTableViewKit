@@ -50,6 +50,10 @@
                                  imageName:(NSString *)imgName
                              accessoryType:(UITableViewCellAccessoryType)type;
 
++ (IBTTableViewCellInfo *)badgeRightCellForSel:(SEL)sel target:(id)target
+                                         title:(NSString *)title badge:(id)badge rightValue:(NSString *)rightValue
+                                     imageName:(NSString *)name;
+
 + (IBTTableViewCellInfo *)badgeCellForSel:(SEL)sel target:(id)target
                                     title:(NSString *)title badge:(id)badge rightValue:(NSString *)rightValue
                                 imageName:(NSString *)name;
@@ -111,10 +115,11 @@ FOUNDATION_EXPORT NSString * const CInfoDetailColorKey;
 FOUNDATION_EXPORT NSString * const CInfoImageNameKey;
 
 /*
- @{"imageName":"MoreMyBankCard.png","title":"Wallet","badge":"New"}
+ @{"imageName":"MoreMyBankCard.png","title":"Wallet","badge":"New", "badgeRight":YES}
  */
 FOUNDATION_EXPORT NSString * const CInfoBadgeKey;
 FOUNDATION_EXPORT NSString * const CInfoBadgeBGColorKey;
+FOUNDATION_EXPORT NSString * const CInfoBadgeAlignmentRightKey;
 
 /*
  @{"title":"Settings","rightValueFontSize":"14","imageName":"MoreSetting.png","rightValue":"Unprotected"}

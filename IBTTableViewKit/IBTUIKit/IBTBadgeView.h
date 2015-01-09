@@ -13,6 +13,7 @@
 @class IBTUILabel;
 @interface IBTBadgeView : UIImageView
 
+@property (assign, nonatomic) BOOL bRightAlignment;
 @property (assign, nonatomic) CGFloat fAddedWidth;
 @property (assign, nonatomic) CGPoint pOriginPoint;
 

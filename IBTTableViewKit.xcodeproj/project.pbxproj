@@ -7,13 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C19DB1821A5CFC3900FEB6C9 /* IBTUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C19DB1811A5CFC3900FEB6C9 /* IBTUILabel.m */; };
+		C1C4F1011A5F7A3600475A3D /* UIView+ViewFrameGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C4F1001A5F7A3600475A3D /* UIView+ViewFrameGeometry.m */; };
+		C1C4F1021A5F7A3600475A3D /* UIView+ViewFrameGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C4F1001A5F7A3600475A3D /* UIView+ViewFrameGeometry.m */; };
+		C1E5857C1A5EE07D00853B2C /* UILabel+SizeCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E5857B1A5EE07D00853B2C /* UILabel+SizeCalculate.m */; };
+		C1E5857D1A5EE07D00853B2C /* UILabel+SizeCalculate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E5857B1A5EE07D00853B2C /* UILabel+SizeCalculate.m */; };
+		C1E585801A5EEF5800853B2C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E5857F1A5EEF5800853B2C /* UIImage+Tint.m */; };
+		C1E585811A5EEF5800853B2C /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E5857F1A5EEF5800853B2C /* UIImage+Tint.m */; };
+		C1EF69D71A5E1C87004884A3 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1EF69D61A5E1C87004884A3 /* Reveal.framework */; };
+		C1EF69DA1A5E2891004884A3 /* IBTBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EF69D91A5E2891004884A3 /* IBTBadgeView.m */; };
+		C1EF69DD1A5E7F53004884A3 /* EditorCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EF69DC1A5E7F53004884A3 /* EditorCellsViewController.m */; };
+		C1EF69DE1A5E7F53004884A3 /* EditorCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EF69DC1A5E7F53004884A3 /* EditorCellsViewController.m */; };
 		C1FF6CE71A5A9D30000D0F48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6CE61A5A9D30000D0F48 /* main.m */; };
 		C1FF6CEA1A5A9D30000D0F48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6CE91A5A9D30000D0F48 /* AppDelegate.m */; };
 		C1FF6CED1A5A9D30000D0F48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6CEC1A5A9D30000D0F48 /* ViewController.m */; };
-		C1FF6CF01A5A9D30000D0F48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1FF6CEE1A5A9D30000D0F48 /* Main.storyboard */; };
 		C1FF6CF21A5A9D30000D0F48 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1FF6CF11A5A9D30000D0F48 /* Images.xcassets */; };
 		C1FF6CF51A5A9D30000D0F48 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1FF6CF31A5A9D30000D0F48 /* LaunchScreen.xib */; };
 		C1FF6D011A5A9D30000D0F48 /* IBTTableViewKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D001A5A9D30000D0F48 /* IBTTableViewKitTests.m */; };
+		C1FF6D0D1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D0C1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m */; };
+		C1FF6D0E1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D0C1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m */; };
+		C1FF6D111A5A9F24000D0F48 /* IBTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D101A5A9F24000D0F48 /* IBTTableViewCell.m */; };
+		C1FF6D121A5A9F24000D0F48 /* IBTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D101A5A9F24000D0F48 /* IBTTableViewCell.m */; };
+		C1FF6D151A5A9F3F000D0F48 /* IBTTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D141A5A9F3F000D0F48 /* IBTTableView.m */; };
+		C1FF6D161A5A9F3F000D0F48 /* IBTTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D141A5A9F3F000D0F48 /* IBTTableView.m */; };
+		C1FF6D191A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D181A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m */; };
+		C1FF6D1A1A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D181A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m */; };
+		C1FF6D1D1A5A9FA8000D0F48 /* IBTTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D1C1A5A9FA8000D0F48 /* IBTTableViewInfo.m */; };
+		C1FF6D1E1A5A9FA8000D0F48 /* IBTTableViewInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D1C1A5A9FA8000D0F48 /* IBTTableViewInfo.m */; };
+		C1FF6D211A5A9FC2000D0F48 /* IBTTableViewCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D201A5A9FC2000D0F48 /* IBTTableViewCellInfo.m */; };
+		C1FF6D221A5A9FC2000D0F48 /* IBTTableViewCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1FF6D201A5A9FC2000D0F48 /* IBTTableViewCellInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +49,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C19DB1801A5CFC3900FEB6C9 /* IBTUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTUILabel.h; sourceTree = "<group>"; };
+		C19DB1811A5CFC3900FEB6C9 /* IBTUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTUILabel.m; sourceTree = "<group>"; };
+		C1C4F0FF1A5F7A3600475A3D /* UIView+ViewFrameGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewFrameGeometry.h"; sourceTree = "<group>"; };
+		C1C4F1001A5F7A3600475A3D /* UIView+ViewFrameGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewFrameGeometry.m"; sourceTree = "<group>"; };
+		C1C4F1031A5F85F500475A3D /* IBTTableViewKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IBTTableViewKit-Prefix.pch"; sourceTree = "<group>"; };
+		C1E5857A1A5EE07D00853B2C /* UILabel+SizeCalculate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+SizeCalculate.h"; sourceTree = "<group>"; };
+		C1E5857B1A5EE07D00853B2C /* UILabel+SizeCalculate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+SizeCalculate.m"; sourceTree = "<group>"; };
+		C1E5857E1A5EEF5800853B2C /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
+		C1E5857F1A5EEF5800853B2C /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
+		C1EF69D61A5E1C87004884A3 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		C1EF69D81A5E2891004884A3 /* IBTBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTBadgeView.h; sourceTree = "<group>"; };
+		C1EF69D91A5E2891004884A3 /* IBTBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTBadgeView.m; sourceTree = "<group>"; };
+		C1EF69DB1A5E7F53004884A3 /* EditorCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorCellsViewController.h; sourceTree = "<group>"; };
+		C1EF69DC1A5E7F53004884A3 /* EditorCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorCellsViewController.m; sourceTree = "<group>"; };
 		C1FF6CE11A5A9D30000D0F48 /* IBTTableViewKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBTTableViewKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FF6CE51A5A9D30000D0F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1FF6CE61A5A9D30000D0F48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -34,12 +70,24 @@
 		C1FF6CE91A5A9D30000D0F48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C1FF6CEB1A5A9D30000D0F48 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C1FF6CEC1A5A9D30000D0F48 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		C1FF6CEF1A5A9D30000D0F48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1FF6CF11A5A9D30000D0F48 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C1FF6CF41A5A9D30000D0F48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C1FF6CFA1A5A9D30000D0F48 /* IBTTableViewKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IBTTableViewKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1FF6CFF1A5A9D30000D0F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1FF6D001A5A9D30000D0F48 /* IBTTableViewKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBTTableViewKitTests.m; sourceTree = "<group>"; };
+		C1FF6D0B1A5A9E7A000D0F48 /* IBTTableViewUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTTableViewUserInfo.h; sourceTree = "<group>"; };
+		C1FF6D0C1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTTableViewUserInfo.m; sourceTree = "<group>"; };
+		C1FF6D0F1A5A9F24000D0F48 /* IBTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTTableViewCell.h; sourceTree = "<group>"; };
+		C1FF6D101A5A9F24000D0F48 /* IBTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTTableViewCell.m; sourceTree = "<group>"; };
+		C1FF6D131A5A9F3F000D0F48 /* IBTTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTTableView.h; sourceTree = "<group>"; };
+		C1FF6D141A5A9F3F000D0F48 /* IBTTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTTableView.m; sourceTree = "<group>"; };
+		C1FF6D171A5A9F7D000D0F48 /* IBTTableViewSectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTTableViewSectionInfo.h; sourceTree = "<group>"; };
+		C1FF6D181A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTTableViewSectionInfo.m; sourceTree = "<group>"; };
+		C1FF6D1B1A5A9FA8000D0F48 /* IBTTableViewInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTTableViewInfo.h; sourceTree = "<group>"; };
+		C1FF6D1C1A5A9FA8000D0F48 /* IBTTableViewInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTTableViewInfo.m; sourceTree = "<group>"; };
+		C1FF6D1F1A5A9FC2000D0F48 /* IBTTableViewCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTTableViewCellInfo.h; sourceTree = "<group>"; };
+		C1FF6D201A5A9FC2000D0F48 /* IBTTableViewCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBTTableViewCellInfo.m; sourceTree = "<group>"; };
+		C1FF6D231A5A9FF3000D0F48 /* IBTTableViewInfoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBTTableViewInfoDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1EF69D71A5E1C87004884A3 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +109,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C19DB17F1A5CFBF400FEB6C9 /* IBTUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				C19DB1801A5CFC3900FEB6C9 /* IBTUILabel.h */,
+				C19DB1811A5CFC3900FEB6C9 /* IBTUILabel.m */,
+				C1EF69D81A5E2891004884A3 /* IBTBadgeView.h */,
+				C1EF69D91A5E2891004884A3 /* IBTBadgeView.m */,
+			);
+			path = IBTUIKit;
+			sourceTree = "<group>";
+		};
+		C1E585791A5EE07C00853B2C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C1E5857A1A5EE07D00853B2C /* UILabel+SizeCalculate.h */,
+				C1E5857B1A5EE07D00853B2C /* UILabel+SizeCalculate.m */,
+				C1E5857E1A5EEF5800853B2C /* UIImage+Tint.h */,
+				C1E5857F1A5EEF5800853B2C /* UIImage+Tint.m */,
+				C1C4F0FF1A5F7A3600475A3D /* UIView+ViewFrameGeometry.h */,
+				C1C4F1001A5F7A3600475A3D /* UIView+ViewFrameGeometry.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		C1FF6CD81A5A9D30000D0F48 = {
 			isa = PBXGroup;
 			children = (
+				C1EF69D61A5E1C87004884A3 /* Reveal.framework */,
 				C1FF6CE31A5A9D30000D0F48 /* IBTTableViewKit */,
 				C1FF6CFD1A5A9D30000D0F48 /* IBTTableViewKitTests */,
 				C1FF6CE21A5A9D30000D0F48 /* Products */,
@@ -81,11 +155,15 @@
 		C1FF6CE31A5A9D30000D0F48 /* IBTTableViewKit */ = {
 			isa = PBXGroup;
 			children = (
+				C1E585791A5EE07C00853B2C /* Category */,
+				C19DB17F1A5CFBF400FEB6C9 /* IBTUIKit */,
+				C1FF6D0A1A5A9E44000D0F48 /* IBTTableViewInfo */,
 				C1FF6CE81A5A9D30000D0F48 /* AppDelegate.h */,
 				C1FF6CE91A5A9D30000D0F48 /* AppDelegate.m */,
 				C1FF6CEB1A5A9D30000D0F48 /* ViewController.h */,
 				C1FF6CEC1A5A9D30000D0F48 /* ViewController.m */,
-				C1FF6CEE1A5A9D30000D0F48 /* Main.storyboard */,
+				C1EF69DB1A5E7F53004884A3 /* EditorCellsViewController.h */,
+				C1EF69DC1A5E7F53004884A3 /* EditorCellsViewController.m */,
 				C1FF6CF11A5A9D30000D0F48 /* Images.xcassets */,
 				C1FF6CF31A5A9D30000D0F48 /* LaunchScreen.xib */,
 				C1FF6CE41A5A9D30000D0F48 /* Supporting Files */,
@@ -98,6 +176,7 @@
 			children = (
 				C1FF6CE51A5A9D30000D0F48 /* Info.plist */,
 				C1FF6CE61A5A9D30000D0F48 /* main.m */,
+				C1C4F1031A5F85F500475A3D /* IBTTableViewKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -117,6 +196,26 @@
 				C1FF6CFF1A5A9D30000D0F48 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C1FF6D0A1A5A9E44000D0F48 /* IBTTableViewInfo */ = {
+			isa = PBXGroup;
+			children = (
+				C1FF6D131A5A9F3F000D0F48 /* IBTTableView.h */,
+				C1FF6D141A5A9F3F000D0F48 /* IBTTableView.m */,
+				C1FF6D0F1A5A9F24000D0F48 /* IBTTableViewCell.h */,
+				C1FF6D101A5A9F24000D0F48 /* IBTTableViewCell.m */,
+				C1FF6D0B1A5A9E7A000D0F48 /* IBTTableViewUserInfo.h */,
+				C1FF6D0C1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m */,
+				C1FF6D1B1A5A9FA8000D0F48 /* IBTTableViewInfo.h */,
+				C1FF6D1C1A5A9FA8000D0F48 /* IBTTableViewInfo.m */,
+				C1FF6D171A5A9F7D000D0F48 /* IBTTableViewSectionInfo.h */,
+				C1FF6D181A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m */,
+				C1FF6D1F1A5A9FC2000D0F48 /* IBTTableViewCellInfo.h */,
+				C1FF6D201A5A9FC2000D0F48 /* IBTTableViewCellInfo.m */,
+				C1FF6D231A5A9FF3000D0F48 /* IBTTableViewInfoDelegate.h */,
+			);
+			path = IBTTableViewInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,7 +298,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1FF6CF01A5A9D30000D0F48 /* Main.storyboard in Resources */,
 				C1FF6CF51A5A9D30000D0F48 /* LaunchScreen.xib in Resources */,
 				C1FF6CF21A5A9D30000D0F48 /* Images.xcassets in Resources */,
 			);
@@ -220,8 +318,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1FF6CED1A5A9D30000D0F48 /* ViewController.m in Sources */,
+				C1FF6D191A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m in Sources */,
+				C1E5857C1A5EE07D00853B2C /* UILabel+SizeCalculate.m in Sources */,
+				C19DB1821A5CFC3900FEB6C9 /* IBTUILabel.m in Sources */,
+				C1C4F1011A5F7A3600475A3D /* UIView+ViewFrameGeometry.m in Sources */,
 				C1FF6CEA1A5A9D30000D0F48 /* AppDelegate.m in Sources */,
+				C1FF6D1D1A5A9FA8000D0F48 /* IBTTableViewInfo.m in Sources */,
+				C1FF6D111A5A9F24000D0F48 /* IBTTableViewCell.m in Sources */,
+				C1EF69DA1A5E2891004884A3 /* IBTBadgeView.m in Sources */,
+				C1E585801A5EEF5800853B2C /* UIImage+Tint.m in Sources */,
+				C1FF6D151A5A9F3F000D0F48 /* IBTTableView.m in Sources */,
+				C1FF6D0D1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m in Sources */,
 				C1FF6CE71A5A9D30000D0F48 /* main.m in Sources */,
+				C1FF6D211A5A9FC2000D0F48 /* IBTTableViewCellInfo.m in Sources */,
+				C1EF69DD1A5E7F53004884A3 /* EditorCellsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +339,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1FF6D221A5A9FC2000D0F48 /* IBTTableViewCellInfo.m in Sources */,
+				C1E5857D1A5EE07D00853B2C /* UILabel+SizeCalculate.m in Sources */,
+				C1E585811A5EEF5800853B2C /* UIImage+Tint.m in Sources */,
+				C1C4F1021A5F7A3600475A3D /* UIView+ViewFrameGeometry.m in Sources */,
+				C1FF6D0E1A5A9E7A000D0F48 /* IBTTableViewUserInfo.m in Sources */,
+				C1FF6D1E1A5A9FA8000D0F48 /* IBTTableViewInfo.m in Sources */,
+				C1FF6D121A5A9F24000D0F48 /* IBTTableViewCell.m in Sources */,
 				C1FF6D011A5A9D30000D0F48 /* IBTTableViewKitTests.m in Sources */,
+				C1FF6D161A5A9F3F000D0F48 /* IBTTableView.m in Sources */,
+				C1FF6D1A1A5A9F7D000D0F48 /* IBTTableViewSectionInfo.m in Sources */,
+				C1EF69DE1A5E7F53004884A3 /* EditorCellsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,14 +364,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C1FF6CEE1A5A9D30000D0F48 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C1FF6CEF1A5A9D30000D0F48 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C1FF6CF31A5A9D30000D0F48 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -345,7 +457,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/IBTTableViewKit/IBTTableViewKit-Prefix.pch";
 				INFOPLIST_FILE = IBTTableViewKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,7 +474,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/IBTTableViewKit/IBTTableViewKit-Prefix.pch";
 				INFOPLIST_FILE = IBTTableViewKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +540,7 @@
 				C1FF6D061A5A9D30000D0F48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1FF6D071A5A9D30000D0F48 /* Build configuration list for PBXNativeTarget "IBTTableViewKitTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +549,7 @@
 				C1FF6D091A5A9D30000D0F48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

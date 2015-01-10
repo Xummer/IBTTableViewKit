@@ -138,6 +138,7 @@ FOUNDATION_EXPORT NSString * const CInfoLeftValueFontSizeKey;
 FOUNDATION_EXPORT NSString * const CInfoLeftValueColorKey;
 
 FOUNDATION_EXPORT NSString * const CInfoURLKey;
+FOUNDATION_EXPORT NSString * const CInfoSwipeAbleKey;   // swipe show delete button
 
 /*
  @{"switch":#"<UISwitch: 0x17ea71d0; frame = (254 6; 51 31); layer = <CALayer: 0x17ea7260>>","title":"Sticky on Top","on":false}

@@ -82,6 +82,7 @@
     [sec2Info addCell:urlCellInfo];
     IBTTableViewCellInfo *innerUrlCellInfo =
     [IBTTableViewCellInfo urlInnerBlueCellForTitle:@"Home Page" leftValue:@"Xummer26.com" url:@"http://xummer26.com"];
+    [innerUrlCellInfo addUserInfoValue:@( YES ) forKey:CInfoSwipeAbleKey];
     [sec2Info addCell:innerUrlCellInfo];
     
     IBTTableViewCellInfo *badgeCellInfo =

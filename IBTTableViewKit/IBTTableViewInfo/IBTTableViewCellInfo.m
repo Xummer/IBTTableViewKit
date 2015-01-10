@@ -836,6 +836,7 @@ NSString * const CInfoLeftValueFontSizeKey      = @"leftValueFontSize";
 NSString * const CInfoLeftValueColorKey         = @"leftValueColor";
 
 NSString * const CInfoURLKey                    = @"url";
+NSString * const CInfoSwipeAbleKey              = @"swipeable";
 
 /*
  @{"switch":#"<UISwitch: 0x17ea71d0; frame = (254 6; 51 31); layer = <CALayer: 0x17ea7260>>","title":"Sticky on Top","on":false}

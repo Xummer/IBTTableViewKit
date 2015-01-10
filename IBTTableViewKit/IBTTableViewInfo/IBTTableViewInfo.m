@@ -9,7 +9,6 @@
 #define IBT_GROUPED_TABLEVIEW_TOP_MARGIN    (10.0f)
 
 #import "IBTTableViewInfo.h"
-
 /*
  @{ "showIndex" : NO }
 */
@@ -18,6 +17,7 @@ NSString * const TInfoShowRightIndexKey          = @"showIndex";
 
 #import "IBTTableView.h"
 #import "IBTTableViewCell.h"
+#import "IBTTableViewInfoDelegate.h"
 #import "UILabel+SizeCalculate.h"
 
 static NSString *IBTTableViewCellIdentifier = @"IBTTableViewCell";
@@ -183,6 +183,12 @@ UITableViewDataSource
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     IBTTableViewSectionInfo *secInfo = [self getSectionAt:section];
     return [secInfo getUserInfoValueForKey:SInfoFooterTitleKey];
+}
+
+// Editing
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    IBTTableViewCellInfo *cellInfo = [self getCellAtSection:indexPath.section row:indexPath.row];
+    return [[cellInfo getUserInfoValueForKey:CInfoSwipeAbleKey] boolValue];
 }
 
 #pragma mark - UITableViewDelegate
@@ -368,6 +374,31 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     
     return view;
+}
+
+// Edit
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([_delegate respondsToSelector:@selector(commitEditingForRowAtIndexPath:Cell:)]) {
+        [_delegate commitEditingForRowAtIndexPath:indexPath
+                                             Cell:[self getCellAtSection:indexPath.section row:indexPath.row]];
+    }
+}
+
+
+//
+
+- (void)tableView:(UITableView *)tableView
+accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    if ([_delegate respondsToSelector:@selector(accessoryButtonTappedForRowWithIndexPath:Cell:)])
+    {
+        [_delegate accessoryButtonTappedForRowWithIndexPath:indexPath
+                                                       Cell:[self getCellAtSection:indexPath.section row:indexPath.row]];
+    }
+    
 }
 
 

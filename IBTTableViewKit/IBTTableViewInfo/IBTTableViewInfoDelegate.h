@@ -10,7 +10,7 @@
 
 @protocol IBTTableViewInfoDelegate <NSObject, UIScrollViewDelegate>
 @optional
-- (void)commitEditingForRowAtIndexPath:(NSIndexPath *)indexPath Cell:(UITableViewCell *)cell;
-- (void)accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath Cell:(UITableViewCell *)cell;
+- (void)commitEditingForRowAtIndexPath:(NSIndexPath *)indexPath Cell:(id)cellInfo;
+- (void)accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath Cell:(id)cellInfo;
 
 @end

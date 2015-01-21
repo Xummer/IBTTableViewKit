@@ -36,6 +36,8 @@
 - (void)setAccessoryType:(UITableViewCellAccessoryType)accessoryType {
     [super setAccessoryType:accessoryType];
     
+    self.accessoryView = nil;
+    
     switch (accessoryType) {
         case UITableViewCellAccessoryDisclosureIndicator:
         {            

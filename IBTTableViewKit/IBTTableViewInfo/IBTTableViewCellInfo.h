@@ -90,10 +90,10 @@
                                autoCorrect:(BOOL)correct focus:(BOOL)focus
                                       text:(NSString *)text;
 
-- (void)makeNormalCell:(IBTTableViewCell *)cell;
-- (void)makeSwitchCell:(IBTTableViewCell *)cell;
-- (void)makeCenterCell:(IBTTableViewCell *)cell;
-- (void)makeEditorCell:(IBTTableViewCell *)cell;
+- (void)makeNormalCell:(IBTTableViewCellInfo *)cellInfo;
+- (void)makeSwitchCell:(IBTTableViewCellInfo *)cellInfo;
+- (void)makeCenterCell:(IBTTableViewCellInfo *)cellInfo;
+- (void)makeEditorCell:(IBTTableViewCellInfo *)cellInfo;
 
 @end
 

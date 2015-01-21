@@ -48,21 +48,6 @@ UITableViewDataSource
     _tableView.delegate = self;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    switch (style) {
-        case UITableViewStyleGrouped:
-        {
-            _tableView.tableHeaderView = [[UIView alloc] initWithFrame:(CGRect){
-                .origin = CGPointZero,
-                .size.width = 0,
-                .size.height = IBT_GROUPED_TABLEVIEW_TOP_MARGIN
-            }];
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
     return self;
 }
 
@@ -154,7 +139,7 @@ UITableViewDataSource
     {
         IMP imp = [cellInfo.makeTarget methodForSelector:cellInfo.makeSel];
         void (*func)(id, SEL, id) = (void *)imp;
-        func(cellInfo.makeTarget, cellInfo.makeSel, cell);
+        func(cellInfo.makeTarget, cellInfo.makeSel, cellInfo);
     }
 }
 
@@ -332,6 +317,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                 NSString *nsFTitle = [secInfo getUserInfoValueForKey:SInfoFooterTitleKey];
                 
                 if (nsFTitle.length > 0) {
+                    
+                    if (0 == section && !_tableView.tableHeaderView) {
+                        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:(CGRect){
+                            .origin = CGPointZero,
+                            .size.width = 0,
+                            .size.height = IBT_GROUPED_TABLEVIEW_TOP_MARGIN
+                        }];
+                    }
+                    
                     CGRect frame = (CGRect){
                         .origin = CGPointZero,
                         .size.width = CGRectGetWidth(tableView.frame),

@@ -293,8 +293,9 @@
 
 #pragma mark - Make Cell
 
-- (void)makeNormalCell:(IBTTableViewCell *)cell {
+- (void)makeNormalCell:(IBTTableViewCellInfo *)cellInfo {
     
+    IBTTableViewCell *cell = cellInfo.cell;
     for (UIView *v in [cell.contentView subviews]) {
         if (v.tag == IBT_CELL_TITLE_LABEL_TAG) {
             continue;
@@ -303,19 +304,19 @@
         [v removeFromSuperview];
     }
     
-    self.cell = cell;
 //    cell.editingStyle = self.editStyle;
-    cell.selectionStyle = self.selectionStyle;
-    cell.accessoryType = self.accessoryType;
+    cell.selectionStyle = cellInfo.selectionStyle;
+    cell.accessoryType = cellInfo.accessoryType;
     
     CGFloat fGap = IBT_CELL_MARGIN;
     CGFloat fLeftX = fGap;
     CGFloat fMaxWidth = CGRectGetWidth(cell.contentView.bounds) - ((cell.accessoryType !=UITableViewCellAccessoryNone || cell.accessoryView) ? 0 : fGap);
     CGFloat fRightX = fMaxWidth;
+    CGFloat fH = self.fCellHeight;
     
     // Left Image
     UIImageView *leftImageV = nil;
-    NSString *imageName = [self getUserInfoValueForKey:CInfoImageNameKey];
+    NSString *imageName = [cellInfo getUserInfoValueForKey:CInfoImageNameKey];
     if (imageName.length > 0) {
         UIImage *leftImg = [UIImage imageNamed:imageName];
         if (leftImg) {
@@ -324,14 +325,14 @@
             CGFloat imageH = leftImg.size.height;
             CGFloat imageW = leftImg.size.width;
             
-            if (leftImg.size.height > CGRectGetHeight(cell.contentView.bounds)) {
-                imageH = CGRectGetHeight(cell.contentView.bounds);
+            if (leftImg.size.height > fH) {
+                imageH = fH;
                 imageW = leftImg.size.width / leftImg.size.height * imageH;
             }
             
             leftImageV.frame = (CGRect){
                 .origin.x = fLeftX,
-                .origin.y = (CGRectGetHeight(cell.contentView.bounds) - imageH) * .5f,
+                .origin.y = (fH - imageH) * .5f,
                 .size.width = imageW,
                 .size.height = imageH
             };
@@ -344,11 +345,10 @@
     
     // Title Label
     UILabel *titleLabel;
-    NSString *nsTitle = [self getUserInfoValueForKey:CInfoTitleKey];
-    NSString *nsDetail = [self getUserInfoValueForKey:CInfoDetailKey];
+    NSString *nsTitle = [cellInfo getUserInfoValueForKey:CInfoTitleKey];
+    NSString *nsDetail = [cellInfo getUserInfoValueForKey:CInfoDetailKey];
     
     CGFloat fW = fMaxWidth - fLeftX;
-    CGFloat fH = CGRectGetHeight(cell.contentView.bounds);
     
     UIView *lastTitleLabel = [cell.contentView viewWithTag:IBT_CELL_TITLE_LABEL_TAG];
     if ([lastTitleLabel isKindOfClass:[IBTUILabel class]]) {
@@ -360,7 +360,7 @@
     }
     
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    id titleColor = [self getUserInfoValueForKey:CInfoTitleColorKey];
+    id titleColor = [cellInfo getUserInfoValueForKey:CInfoTitleColorKey];
     if ([titleColor isKindOfClass:[UIColor class]]) {
         titleLabel.textColor = titleColor;
     }
@@ -372,12 +372,12 @@
     titleLabel.text = nsTitle;
     
     if (nsDetail) {
-        id titleFont = [self getUserInfoValueForKey:CInfoTitleFontKey];
+        id titleFont = [cellInfo getUserInfoValueForKey:CInfoTitleFontKey];
         if ([titleFont isKindOfClass:[UIFont class]]) {
             titleLabel.font = titleFont;
         }
         else {
-            id titleFontSize = [self getUserInfoValueForKey:CInfoTitleFontSizeKey];
+            id titleFontSize = [cellInfo getUserInfoValueForKey:CInfoTitleFontSizeKey];
             CGFloat fTitleFontSize =
             ([titleFontSize isKindOfClass:[NSNumber class]]) ?
             [titleFontSize floatValue] :
@@ -391,12 +391,12 @@
         detailLabel.textAlignment = NSTextAlignmentLeft;
         [cell.contentView addSubview:detailLabel];
         
-        id detailFont = [self getUserInfoValueForKey:CInfoDetailFontKey];
+        id detailFont = [cellInfo getUserInfoValueForKey:CInfoDetailFontKey];
         if ([detailFont isKindOfClass:[UIFont class]]) {
             detailLabel.font = detailFont;
         }
         else {
-            id detailFontSize = [self getUserInfoValueForKey:CInfoDetailFontSizeKey];
+            id detailFontSize = [cellInfo getUserInfoValueForKey:CInfoDetailFontSizeKey];
             CGFloat fDetailFontSize =
             ([detailFontSize isKindOfClass:[NSNumber class]]) ?
             [detailFontSize floatValue] :
@@ -404,7 +404,7 @@
             detailLabel.font = [UIFont systemFontOfSize:fDetailFontSize];
         }
         
-        id detailValueColor = [self getUserInfoValueForKey:CInfoDetailColorKey];
+        id detailValueColor = [cellInfo getUserInfoValueForKey:CInfoDetailColorKey];
         if ([detailValueColor isKindOfClass:[UIColor class]]) {
             detailLabel.textColor = detailValueColor;
         }
@@ -437,12 +437,12 @@
     }
     else {
         
-        id titleFont = [self getUserInfoValueForKey:CInfoTitleFontKey];
+        id titleFont = [cellInfo getUserInfoValueForKey:CInfoTitleFontKey];
         if ([titleFont isKindOfClass:[UIFont class]]) {
             titleLabel.font = titleFont;
         }
         else {
-            id titleFontSize = [self getUserInfoValueForKey:CInfoTitleFontSizeKey];
+            id titleFontSize = [cellInfo getUserInfoValueForKey:CInfoTitleFontSizeKey];
             CGFloat fTitleFontSize =
             ([titleFontSize isKindOfClass:[NSNumber class]]) ?
             [titleFontSize floatValue] :
@@ -463,19 +463,19 @@
     
     // Left Value
     IBTUILabel *leftValueLabel = nil;
-    NSString *nsLeftValue = [self getUserInfoValueForKey:CInfoLeftValueKey];
+    NSString *nsLeftValue = [cellInfo getUserInfoValueForKey:CInfoLeftValueKey];
     if (nsLeftValue.length > 0) {
         leftValueLabel = [[IBTUILabel alloc] init];
         leftValueLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         leftValueLabel.textAlignment = NSTextAlignmentLeft;
         [cell.contentView addSubview:leftValueLabel];
         
-        id leftValueFont = [self getUserInfoValueForKey:CInfoLeftValueFontKey];
+        id leftValueFont = [cellInfo getUserInfoValueForKey:CInfoLeftValueFontKey];
         if ([leftValueFont isKindOfClass:[UIFont class]]) {
             leftValueLabel.font = leftValueFont;
         }
         else {
-            id leftValueFontSize = [self getUserInfoValueForKey:CInfoLeftValueFontSizeKey];
+            id leftValueFontSize = [cellInfo getUserInfoValueForKey:CInfoLeftValueFontSizeKey];
             CGFloat fLeftValueFontSize =
             ([leftValueFontSize isKindOfClass:[NSNumber class]]) ?
             [leftValueFontSize floatValue] :
@@ -483,7 +483,7 @@
             leftValueLabel.font = [UIFont systemFontOfSize:fLeftValueFontSize];
         }
         
-        id leftValueColor = [self getUserInfoValueForKey:CInfoLeftValueColorKey];
+        id leftValueColor = [cellInfo getUserInfoValueForKey:CInfoLeftValueColorKey];
         if ([leftValueColor isKindOfClass:[UIColor class]]) {
             leftValueLabel.textColor = leftValueColor;
         }
@@ -506,22 +506,22 @@
     
     // Badge
     IBTBadgeView *badgeView = nil;
-    NSString *nsBadgeStr = [self getUserInfoValueForKey:CInfoBadgeKey];
-    BOOL bBadgeRight = [[self getUserInfoValueForKey:CInfoBadgeAlignmentRightKey] boolValue];
+    NSString *nsBadgeStr = [cellInfo getUserInfoValueForKey:CInfoBadgeKey];
+    BOOL bBadgeRight = [[cellInfo getUserInfoValueForKey:CInfoBadgeAlignmentRightKey] boolValue];
     
     // Set LeftBadge
     if (nsBadgeStr && !bBadgeRight) {
         badgeView =
         [[IBTBadgeView alloc] initWithFrame:(CGRect){
             .origin.x = fLeftX,
-            .origin.y = (CGRectGetHeight(cell.contentView.bounds) - DEFUALT_BADGE_HEIGHT) * .5f,
+            .origin.y = (fH - DEFUALT_BADGE_HEIGHT) * .5f,
             .size.width = DEFUALT_BADGE_HEIGHT,
             .size.height = DEFUALT_BADGE_HEIGHT
         }];
         badgeView.autoresizingMask =
         UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         
-        UIColor *badgeColor = [self getUserInfoValueForKey:CInfoBadgeBGColorKey];
+        UIColor *badgeColor = [cellInfo getUserInfoValueForKey:CInfoBadgeBGColorKey];
         if ([badgeColor isKindOfClass:[UIColor class]]) {
             [badgeView setBadgeColor:badgeColor];
         }
@@ -535,19 +535,19 @@
     
     // Right Value
     IBTUILabel *rightValueLabel = nil;
-    NSString *nsRightValue = [self getUserInfoValueForKey:CInfoRightValueKey];
+    NSString *nsRightValue = [cellInfo getUserInfoValueForKey:CInfoRightValueKey];
     if (nsRightValue.length > 0) {
         rightValueLabel = [[IBTUILabel alloc] init];
         rightValueLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         rightValueLabel.textAlignment = NSTextAlignmentRight;
         [cell.contentView addSubview:rightValueLabel];
         
-        id rightValueFont = [self getUserInfoValueForKey:CInfoRightValueFontKey];
+        id rightValueFont = [cellInfo getUserInfoValueForKey:CInfoRightValueFontKey];
         if ([rightValueFont isKindOfClass:[UIFont class]]) {
             rightValueLabel.font = rightValueFont;
         }
         else {
-            id rightValueFontSize = [self getUserInfoValueForKey:CInfoRightValueFontSizeKey];
+            id rightValueFontSize = [cellInfo getUserInfoValueForKey:CInfoRightValueFontSizeKey];
             CGFloat fRightValueFontSize =
             ([rightValueFontSize isKindOfClass:[NSNumber class]]) ?
             [rightValueFontSize floatValue] :
@@ -555,7 +555,7 @@
             rightValueLabel.font = [UIFont systemFontOfSize:fRightValueFontSize];
         }
         
-        id rightValueColor = [self getUserInfoValueForKey:CInfoRightValueColorKey];
+        id rightValueColor = [cellInfo getUserInfoValueForKey:CInfoRightValueColorKey];
         if ([rightValueColor isKindOfClass:[UIColor class]]) {
             rightValueLabel.textColor = rightValueColor;
         }
@@ -589,7 +589,7 @@
         badgeView.autoresizingMask =
         UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         
-        UIColor *badgeColor = [self getUserInfoValueForKey:CInfoBadgeBGColorKey];
+        UIColor *badgeColor = [cellInfo getUserInfoValueForKey:CInfoBadgeBGColorKey];
         if ([badgeColor isKindOfClass:[UIColor class]]) {
             [badgeView setBadgeColor:badgeColor];
         }
@@ -602,33 +602,28 @@
     }
 }
 
-- (void)makeSwitchCell:(IBTTableViewCell *)cell {
+- (void)makeSwitchCell:(IBTTableViewCellInfo *)cellInfo {
+    IBTTableViewCell *cell = cellInfo.cell;
+    [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     UISwitch *mSwitch = [self getUserInfoValueForKey:CInfoSwitchKey];
     if ([mSwitch isKindOfClass:[UISwitch class]]) {
         mSwitch.on = [[self getUserInfoValueForKey:CInfoSwitchOnKey] boolValue];
-//        NSLog(@"%@ %@", mSwitch.allTargets, [mSwitch actionsForTarget:mSwitch forControlEvent:UIControlEventValueChanged]);
-//        NSLog(@"%@ %@", mSwitch.allTargets, [mSwitch actionsForTarget:mSwitch forControlEvent:UIControlEventValueChanged]);
+        //        NSLog(@"%@ %@", mSwitch.allTargets, [mSwitch actionsForTarget:mSwitch forControlEvent:UIControlEventValueChanged]);
         cell.accessoryView = mSwitch;
     }
     
-    [self makeNormalCell:cell];
-}
-
-- (void)makeCenterCell:(IBTTableViewCell *)cell {
-    [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    //    cell.editingStyle = cellInfo.editStyle;
+    cell.selectionStyle = cellInfo.selectionStyle;
+    //    cell.accessoryType = cellInfo.accessoryType;
     
-    self.cell = cell;
-    //    cell.editingStyle = self.editStyle;
-    cell.selectionStyle = self.selectionStyle;
-    cell.accessoryType = self.accessoryType;
-    
-    NSString *nsTitle = [self getUserInfoValueForKey:CInfoTitleKey];
-    id titleFont = [self getUserInfoValueForKey:CInfoTitleFontKey];
+    NSString *nsTitle = [cellInfo getUserInfoValueForKey:CInfoTitleKey];
+    id titleFont = [cellInfo getUserInfoValueForKey:CInfoTitleFontKey];
     if ([titleFont isKindOfClass:[UIFont class]]) {
         cell.textLabel.font = titleFont;
     }
     else {
-        id titleFontSize = [self getUserInfoValueForKey:CInfoTitleFontSizeKey];
+        id titleFontSize = [cellInfo getUserInfoValueForKey:CInfoTitleFontSizeKey];
         CGFloat fTitleFontSize =
         ([titleFontSize isKindOfClass:[NSNumber class]]) ?
         [titleFontSize floatValue] :
@@ -636,7 +631,41 @@
         cell.textLabel.font = [UIFont systemFontOfSize:fTitleFontSize];
     }
     
-    id titleColor = [self getUserInfoValueForKey:CInfoTitleColorKey];
+    id titleColor = [cellInfo getUserInfoValueForKey:CInfoTitleColorKey];
+    if ([titleColor isKindOfClass:[UIColor class]]) {
+        cell.textLabel.textColor = titleColor;
+    }
+    else {
+        cell.textLabel.textColor = IBT_CELL_TITLE_COLOR_DEFAULT;
+    }
+    
+    cell.textLabel.textAlignment = NSTextAlignmentLeft;
+    cell.textLabel.text = nsTitle;
+}
+
+- (void)makeCenterCell:(IBTTableViewCellInfo *)cellInfo {
+    IBTTableViewCell *cell = cellInfo.cell;
+    [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    //    cell.editingStyle = self.editStyle;
+    cell.selectionStyle = cellInfo.selectionStyle;
+    cell.accessoryType = cellInfo.accessoryType;
+    
+    NSString *nsTitle = [cellInfo getUserInfoValueForKey:CInfoTitleKey];
+    id titleFont = [cellInfo getUserInfoValueForKey:CInfoTitleFontKey];
+    if ([titleFont isKindOfClass:[UIFont class]]) {
+        cell.textLabel.font = titleFont;
+    }
+    else {
+        id titleFontSize = [cellInfo getUserInfoValueForKey:CInfoTitleFontSizeKey];
+        CGFloat fTitleFontSize =
+        ([titleFontSize isKindOfClass:[NSNumber class]]) ?
+        [titleFontSize floatValue] :
+        IBT_CELL_TITLE_FONT_SIZE_DEFAULT;
+        cell.textLabel.font = [UIFont systemFontOfSize:fTitleFontSize];
+    }
+    
+    id titleColor = [cellInfo getUserInfoValueForKey:CInfoTitleColorKey];
     if ([titleColor isKindOfClass:[UIColor class]]) {
         cell.textLabel.textColor = titleColor;
     }
@@ -648,29 +677,29 @@
     cell.textLabel.text = nsTitle;
 }
 
-- (void)makeEditorCell:(IBTTableViewCell *)cell {
+- (void)makeEditorCell:(IBTTableViewCellInfo *)cellInfo {
+    IBTTableViewCell *cell = cellInfo.cell;
     [[cell.contentView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    self.cell = cell;
     //    cell.editingStyle = self.editStyle;
-    cell.selectionStyle = self.selectionStyle;
-    cell.accessoryType = self.accessoryType;
+    cell.selectionStyle = cellInfo.selectionStyle;
+    cell.accessoryType = cellInfo.accessoryType;
     
     CGFloat fGap = IBT_CELL_MARGIN;
     CGFloat fLeftX = fGap;
     CGFloat fMaxWidth = CGRectGetWidth(cell.contentView.bounds) - ((cell.accessoryType !=UITableViewCellAccessoryNone || cell.accessoryView) ? 0 : fGap);
     CGFloat fW = fMaxWidth - fLeftX;
-    CGFloat fH = CGRectGetHeight(cell.contentView.bounds);
+    CGFloat fH = self.fCellHeight;
     
-    NSString *nsTitle = [self getUserInfoValueForKey:CInfoTitleKey];
+    NSString *nsTitle = [cellInfo getUserInfoValueForKey:CInfoTitleKey];
     
     if (nsTitle) {
-        id titleFont = [self getUserInfoValueForKey:CInfoTitleFontKey];
+        id titleFont = [cellInfo getUserInfoValueForKey:CInfoTitleFontKey];
         if ([titleFont isKindOfClass:[UIFont class]]) {
             cell.textLabel.font = titleFont;
         }
         else {
-            id titleFontSize = [self getUserInfoValueForKey:CInfoTitleFontSizeKey];
+            id titleFontSize = [cellInfo getUserInfoValueForKey:CInfoTitleFontSizeKey];
             CGFloat fTitleFontSize =
             ([titleFontSize isKindOfClass:[NSNumber class]]) ?
             [titleFontSize floatValue] :
@@ -678,7 +707,7 @@
             cell.textLabel.font = [UIFont systemFontOfSize:fTitleFontSize];
         }
         
-        id titleColor = [self getUserInfoValueForKey:CInfoTitleColorKey];
+        id titleColor = [cellInfo getUserInfoValueForKey:CInfoTitleColorKey];
         if ([titleColor isKindOfClass:[UIColor class]]) {
             cell.textLabel.textColor = titleColor;
         }
@@ -697,7 +726,7 @@
         
         
         fGap = IBT_CELL_INNER_GAP;
-        id leftMargin = [self getUserInfoValueForKey:CInfoEditorLMarginKey];
+        id leftMargin = [cellInfo getUserInfoValueForKey:CInfoEditorLMarginKey];
         if (leftMargin) {
             fGap += [leftMargin floatValue];
         }
@@ -709,15 +738,16 @@
     }
     
     
-    UITextField *textField = [self getUserInfoValueForKey:CInfoEditorKey];
+    UITextField *textField = [cellInfo getUserInfoValueForKey:CInfoEditorKey];
     if ([textField isKindOfClass:[UITextField class]]) {
         
-        textField.keyboardType = [[self getUserInfoValueForKey:CInfoEditorKeyboardTypeKey] integerValue];
-        textField.secureTextEntry = [[self getUserInfoValueForKey:CInfoEditorSecureTextEntryKey] boolValue];
-        textField.placeholder = [self getUserInfoValueForKey:CInfoEditorTipKey];
-        textField.autocorrectionType = self.autoCorrectionType;
+        textField.keyboardType = [[cellInfo getUserInfoValueForKey:CInfoEditorKeyboardTypeKey] integerValue];
+        textField.secureTextEntry = [[cellInfo getUserInfoValueForKey:CInfoEditorSecureTextEntryKey] boolValue];
+        textField.placeholder = [cellInfo getUserInfoValueForKey:CInfoEditorTipKey];
+        textField.autocorrectionType = cellInfo.autoCorrectionType;
+        textField.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
         
-        NSString *nsText = [self getUserInfoValueForKey:CInfoEditorTextKey];
+        NSString *nsText = [cellInfo getUserInfoValueForKey:CInfoEditorTextKey];
         if (nsText) {
             textField.text = nsText;
         }
@@ -726,14 +756,14 @@
         
         textField.frame = (CGRect){
             .origin.x = fLeftX,
-            .origin.y = (fH - IBT_CELL_TEXTFIELD_DEFAULT_HEIGHT) * .5f,
+            .origin.y = (CGRectGetHeight(cell.contentView.bounds) - IBT_CELL_TEXTFIELD_DEFAULT_HEIGHT) * .5f,
             .size.width = MAX(IBT_CELL_TEXTFIELD_MIN_WIDTH, fW),
             .size.height = IBT_CELL_TEXTFIELD_DEFAULT_HEIGHT
         };
         
         [cell.contentView addSubview:textField];
         
-        if ([[self getUserInfoValueForKey:CInfoEditorFocusKey] boolValue]) {
+        if ([[cellInfo getUserInfoValueForKey:CInfoEditorFocusKey] boolValue]) {
             [textField becomeFirstResponder];
         }
     }

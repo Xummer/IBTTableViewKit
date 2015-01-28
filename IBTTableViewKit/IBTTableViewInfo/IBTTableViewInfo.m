@@ -287,6 +287,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                     [view addSubview:tLabel];
                     
                     CGSize labelSize = [tLabel sizeThatFits:tLabel.frame.size];
+                    if (labelSize.width > CGRectGetWidth(tLabel.frame)) {
+                        labelSize.width = CGRectGetWidth(tLabel.frame);
+                    }
                     frame = view.frame;
                     frame.size.height = labelSize.height;
                     view.frame = frame;
@@ -351,6 +354,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                     [view addSubview:tLabel];
                     
                     CGSize labelSize = [tLabel sizeThatFits:tLabel.frame.size];
+                    if (labelSize.width > CGRectGetWidth(tLabel.frame)) {
+                        labelSize.width = CGRectGetWidth(tLabel.frame);
+                    }
                     frame = view.frame;
                     frame.size.height = labelSize.height;
                     view.frame = frame;

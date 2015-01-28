@@ -100,7 +100,10 @@
     CGFloat fMaxW = (m_fRange > 0) ? m_fRange : CGFLOAT_MAX;
     
     CGSize size = [_m_labelView sizeThatFits:CGSizeMake(fMaxW, CGRectGetHeight(_m_labelView.frame))];
-    fOriginWidth= size.width;
+    if (size.width > fMaxW) {
+        size.width = fMaxW;
+    }
+    fOriginWidth = size.width;
     
     CGRect rect = self.frame;
     rect.size.width = (_pOriginPoint.x + _fAddedWidth) * 2 + fOriginWidth;

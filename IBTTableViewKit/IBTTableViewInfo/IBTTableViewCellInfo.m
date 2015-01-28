@@ -416,7 +416,13 @@
         
         fW = fMaxWidth - fLeftX;
         CGSize titleLabelSize = [titleLabel sizeThatFits:CGSizeMake(fW, fH *.5f)];
+        if (titleLabelSize.width > fW) {
+            titleLabelSize.width = fW;
+        }
         CGSize detailLabelSize = [detailLabel sizeThatFits:CGSizeMake(fW, fH * .5f)];
+        if (detailLabelSize.width > fW) {
+            detailLabelSize.width = fW;
+        }
         
         CGFloat fTopY = (fH - titleLabelSize.height - detailLabelSize.height) * .5f;
         
@@ -451,6 +457,9 @@
         }
         
         CGSize titleLabelSize = [titleLabel sizeThatFits:CGSizeMake(fW, fH)];
+        if (titleLabelSize.width > fW) {
+            titleLabelSize.width = fW;
+        }
         titleLabel.frame = (CGRect){
             .origin.x = fLeftX,
             .origin.y = (fH - titleLabelSize.height) * .5f,
@@ -495,6 +504,9 @@
         
         fW = MAX(fMaxWidth - fLeftX, IBT_CELL_LEFT_LABEL_MIN_WIDTH);
         CGSize leftLabelSize = [leftValueLabel sizeThatFits:CGSizeMake(fW, fH)];
+        if (leftLabelSize.width > fW) {
+            leftLabelSize.width = fW;
+        }
         leftValueLabel.frame = (CGRect){
             .origin.x = fLeftX,
             .origin.y = (fH - leftLabelSize.height) * .5f,
@@ -567,6 +579,10 @@
         
         fW = MAX(fMaxWidth - fLeftX, IBT_CELL_RIGHT_LABEL_MIN_WIDTH);
         CGSize rightLabelSize = [rightValueLabel sizeThatFits:CGSizeMake(fW, fH)];
+        if (rightLabelSize.width > fW) {
+            rightLabelSize.width = fW;
+            rightValueLabel.autoresizingMask |= UIViewAutoresizingFlexibleWidth;
+        }
         rightValueLabel.frame = (CGRect){
             .origin.x = fMaxWidth - rightLabelSize.width,
             .origin.y = (fH - rightLabelSize.height) * .5f,
@@ -720,6 +736,9 @@
         
         
         CGSize titleLabelSize = [cell.textLabel sizeThatFits:CGSizeMake(fW, fH)];
+        if (titleLabelSize.width > fW) {
+            titleLabelSize.width = fW;
+        }
         CGRect rect = cell.textLabel.frame;
         rect.size.width = titleLabelSize.width;
         cell.textLabel.frame = rect;

@@ -12,6 +12,8 @@ NSString * const SInfoHeaderKey             = @"header";
 NSString * const SInfoFooterKey             = @"footer";
 NSString * const SInfoHeaderTitleKey        = @"headerTitle";
 NSString * const SInfoFooterTitleKey        = @"footerTitle";
+NSString * const SInfoHeaderTitleAligmentKey= @"headerTitleAligment";
+NSString * const SInfoFooterTitleAligmentKey= @"footerTitleAligment";
 
 #import "IBTTableViewCellInfo.h"
 

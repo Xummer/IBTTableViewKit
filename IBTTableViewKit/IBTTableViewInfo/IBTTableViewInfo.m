@@ -279,7 +279,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                     UILabel *tLabel = [[UILabel alloc] initWithFrame:frame];
                     tLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                     tLabel.numberOfLines = 0;
-                    tLabel.textAlignment = NSTextAlignmentLeft;
+                    id tAlign = [secInfo getUserInfoValueForKey:SInfoHeaderTitleAligmentKey];
+                    tLabel.textAlignment = tAlign ? [tAlign unsignedIntegerValue] :NSTextAlignmentLeft;
                     tLabel.backgroundColor = [UIColor clearColor];
                     tLabel.font = [UIFont systemFontOfSize:IBT_SECTION_HEADER_DEFAULT_FONT_SIZE];
                     tLabel.textColor = IBT_SECTION_HEADER_DEFAULT_COLOR;
@@ -346,7 +347,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                     UILabel *tLabel = [[UILabel alloc] initWithFrame:frame];
                     tLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                     tLabel.numberOfLines = 0;
-                    tLabel.textAlignment = NSTextAlignmentCenter;
+                    id tAlign = [secInfo getUserInfoValueForKey:SInfoFooterTitleAligmentKey];
+                    tLabel.textAlignment = tAlign ? [tAlign unsignedIntegerValue] : NSTextAlignmentCenter;
                     tLabel.backgroundColor = [UIColor clearColor];
                     tLabel.font = [UIFont systemFontOfSize:IBT_SECTION_FOOTER_DEFAULT_FONT_SIZE];
                     tLabel.textColor = IBT_SECTION_FOOTER_DEFAULT_COLOR;

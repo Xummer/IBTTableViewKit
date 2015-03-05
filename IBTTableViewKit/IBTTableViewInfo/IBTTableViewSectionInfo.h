@@ -59,3 +59,5 @@ FOUNDATION_EXPORT NSString * const SInfoHeaderKey;
 FOUNDATION_EXPORT NSString * const SInfoFooterKey;
 FOUNDATION_EXPORT NSString * const SInfoHeaderTitleKey;
 FOUNDATION_EXPORT NSString * const SInfoFooterTitleKey;
+FOUNDATION_EXPORT NSString * const SInfoHeaderTitleAligmentKey;
+FOUNDATION_EXPORT NSString * const SInfoFooterTitleAligmentKey;

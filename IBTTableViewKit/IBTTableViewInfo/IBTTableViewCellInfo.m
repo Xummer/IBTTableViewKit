@@ -805,6 +805,9 @@
     
     id <UITextInput> textHolder = sender.object;
     
+    NSString *toBeString = [textHolder performSelector:@selector(text)];
+    [self addUserInfoValue:toBeString forKey:CInfoEditorTextKey];
+    
     if (self.actionTarget &&
         [self.actionTarget respondsToSelector:self.actionSel])
     {
@@ -812,11 +815,6 @@
         void (*func)(id, SEL, id) = (void *)imp;
         func(self.actionTarget, self.actionSel, self);
     }
-    else {
-        NSString *toBeString = [textHolder performSelector:@selector(text)];
-        [self addUserInfoValue:toBeString forKey:CInfoEditorTextKey];
-    }
-    
 }
 
 - (void)actionUrlInnerCell {

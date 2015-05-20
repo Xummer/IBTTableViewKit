@@ -6,9 +6,11 @@
 //  Copyright (c) 2015年 Xummer. All rights reserved.
 //
 
-#define IBT_GROUPED_TABLEVIEW_TOP_MARGIN    (10.0f)
-
 #import "IBTTableViewInfo.h"
+
+#define IBT_GROUPED_TABLEVIEW_TOP_MARGIN    (10.0f)
+#define IBT_DEFAULT_CELL_HEIGHT             (44.0f)
+
 /*
  @{ "showIndex" : NO }
 */
@@ -183,7 +185,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IBTTableViewCellInfo *cellInfo =
     [self getCellAtSection:indexPath.section row:indexPath.row];
-    return cellInfo.fCellHeight;
+    return cellInfo.fCellHeight > 0 ? cellInfo.fCellHeight : IBT_DEFAULT_CELL_HEIGHT;
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -348,7 +350,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                     tLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                     tLabel.numberOfLines = 0;
                     id tAlign = [secInfo getUserInfoValueForKey:SInfoFooterTitleAligmentKey];
-                    tLabel.textAlignment = tAlign ? [tAlign unsignedIntegerValue] : NSTextAlignmentCenter;
+                    tLabel.textAlignment = tAlign ? [tAlign unsignedIntegerValue] : NSTextAlignmentLeft;
                     tLabel.backgroundColor = [UIColor clearColor];
                     tLabel.font = [UIFont systemFontOfSize:IBT_SECTION_FOOTER_DEFAULT_FONT_SIZE];
                     tLabel.textColor = IBT_SECTION_FOOTER_DEFAULT_COLOR;

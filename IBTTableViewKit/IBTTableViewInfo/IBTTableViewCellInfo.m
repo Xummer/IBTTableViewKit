@@ -339,7 +339,16 @@
             
             [cell.contentView addSubview:leftImageV];
             
-            fLeftX = CGRectGetMaxX(leftImageV.frame) + fGap;
+            CGFloat fRMargin = 0;
+            id imageRMargin = [self getUserInfoValueForKey:CInfoImageRightMarginKey];
+            if ([imageRMargin isKindOfClass:[NSNumber class]]) {
+                fRMargin = [imageRMargin floatValue];
+            }
+            else {
+                fRMargin = fGap;
+            }
+            
+            fLeftX = CGRectGetMaxX(leftImageV.frame) + fRMargin;
         }
     }
     
@@ -858,6 +867,7 @@ NSString * const CInfoDetailFontKey             = @"detailFont";
 NSString * const CInfoDetailFontSizeKey         = @"detailFontSize";
 NSString * const CInfoDetailColorKey            = @"detailColor";
 NSString * const CInfoImageNameKey              = @"imageName";
+NSString * const CInfoImageRightMarginKey       = @"imageRightMargin";
 
 /*
  @{"imageName":"MoreMyBankCard.png","title":"Wallet","badge":"New"}

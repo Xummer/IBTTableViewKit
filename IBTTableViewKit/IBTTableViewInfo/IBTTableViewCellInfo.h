@@ -113,6 +113,7 @@ FOUNDATION_EXPORT NSString * const CInfoDetailFontSizeKey;
 FOUNDATION_EXPORT NSString * const CInfoDetailColorKey;
 
 FOUNDATION_EXPORT NSString * const CInfoImageNameKey;
+FOUNDATION_EXPORT NSString * const CInfoImageRightMarginKey;
 
 /*
  @{"imageName":"MoreMyBankCard.png","title":"Wallet","badge":"New", "badgeRight":YES}

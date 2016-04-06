@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "IBTTableView.h"
 #import "IBTTableViewInfo.h"
+#import "IBTTableViewCell.h"
 
 #import "EditorCellsViewController.h"
 
@@ -118,8 +119,66 @@
     [sec4Info addCell:switchCellInfo];
     [_m_tableViewInfo addSection:sec4Info];
     
+    // Section 5
+    IBTTableViewSectionInfo *sec5Info = [IBTTableViewSectionInfo sectionInfoDefaut];
+    IBTTableViewCellInfo *customCellInfo = [IBTTableViewCellInfo new];
+    customCellInfo.makeTarget = self;
+    customCellInfo.makeSel = @selector(makeCustomCell:);
+    customCellInfo.actionTarget = self;
+    customCellInfo.actionSel = @selector(onCustomCellAction:);
+    customCellInfo.selectionStyle = UITableViewCellSelectionStyleNone;
+    [sec5Info addCell:customCellInfo];
+    [_m_tableViewInfo addSection:sec5Info];
+    
+    // Add tableView
     IBTTableView *tableV = [_m_tableViewInfo getTableView];
     [self.view addSubview:tableV];
+}
+
+- (void)makeCustomCell:(IBTTableViewCellInfo *)cellInfo {
+    
+    IBTTableViewCell *cell = cellInfo.cell;
+    for (UIView *v in [cell.contentView subviews]) {
+        [v removeFromSuperview];
+    }
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    UILabel *customLabel = [[UILabel alloc] initWithFrame:CGRectInset(cell.contentView.bounds, 15, 0)];
+    customLabel.font = [UIFont boldSystemFontOfSize:17];
+    
+    NSString *nsText = @"Google";
+    
+    if ([customLabel respondsToSelector:@selector(attributedText)]) {
+        NSMutableAttributedString *attributedText =
+        [[NSMutableAttributedString alloc] initWithString:nsText
+                                               attributes:@{
+                                                            NSForegroundColorAttributeName : customLabel.textColor,
+                                                            NSFontAttributeName : customLabel.font
+                                                            }];
+        UIColor *blue = [UIColor colorWithRed:66/255.0f green:133/255.0f blue:244/255.0f alpha:1];
+        UIColor *red = [UIColor colorWithRed:234/255.0f green:67/255.0f blue:53/255.0f alpha:1];
+        UIColor *yellow = [UIColor colorWithRed:251/255.0f green:188/255.0f blue:5/255.0f alpha:1];
+        UIColor *green = [UIColor colorWithRed:52/255.0f green:168/255.0f blue:83/255.0f alpha:1];
+        [attributedText setAttributes:@{ NSForegroundColorAttributeName : blue }
+                                range:NSMakeRange(0, 1)];
+        [attributedText setAttributes:@{ NSForegroundColorAttributeName : red }
+                                range:NSMakeRange(1, 1)];
+        [attributedText setAttributes:@{ NSForegroundColorAttributeName : yellow }
+                                range:NSMakeRange(2, 1)];
+        [attributedText setAttributes:@{ NSForegroundColorAttributeName : blue }
+                                range:NSMakeRange(3, 1)];
+        [attributedText setAttributes:@{ NSForegroundColorAttributeName : green }
+                                range:NSMakeRange(4, 1)];
+        [attributedText setAttributes:@{ NSForegroundColorAttributeName : red }
+                                range:NSMakeRange(5, 1)];
+        customLabel.attributedText = attributedText;
+    }
+    else {
+        customLabel.text = nsText;
+    }
+    
+    [cell.contentView addSubview:customLabel];
 }
 
 #pragma mark - Actions
@@ -150,6 +209,10 @@
 
 - (void)onDetailCellAction:(id)sender {
     NSLog(@"onDetailCellAction:");
+}
+
+- (void)onCustomCellAction:(id)sender {
+    NSLog(@"onCustomCellAction");
 }
 
 @end
